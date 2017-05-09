@@ -1,0 +1,24 @@
+{
+  "name": "tokenize-monster",
+  "version": "0.0.1",
+  "description": "Yet another powerful tokenizer in js",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tokenizer",
+    "parser",
+    "replacer"
+  ],
+  "author": "clitetailor",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clitetailor/tokenize-monster.git"
+  },
+  "bugs": {
+    "url": "https://github.com/clitetailor/tokenize-monster/issues"
+  },
+  "homepage": "https://github.com/clitetailor/tokenize-monster#readme"
+}
