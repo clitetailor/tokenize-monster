@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/clitetailor/tokenize-monster/issues"
   },
-  "homepage": "https://github.com/clitetailor/tokenize-monster#readme"
+  "homepage": "https://github.com/clitetailor/tokenize-monster#readme",
+  "dependencies": {
+    "immu-func": "0.0.3-0"
+  }
 }

@@ -3,6 +3,13 @@ Tokenize Monster
 
 > Yet another powerful tokenizer in **JS**.
 
+Install
+-------
+
+```bash
+npm install --save tokenize-monster
+```
+
 Getting Started
 ---------------
 
