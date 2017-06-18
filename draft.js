@@ -2,9 +2,8 @@ const tokenize = require('./lib/tokenize')
 // const debug = require('./lib/fn/debug')
 
 console.log(
-	tokenize("what the hell is this <thing> bla, bla <yeap>")
-		.tag("tag", /<[^><]+>/)
-		.split("word", /\s+/)
-		.filter(text => text !== "")
-		.tokens
+	tokenize(
+		`<question>are you thinking?</question>
+		<answer>not thing!</answer>`
+	).tag('tag', /<[^<>]+>/, text => text.match(/<([^<>]+)>/)[1])
 )
