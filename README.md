@@ -13,62 +13,29 @@ npm install --save tokenize-monster
 Getting Started
 ---------------
 
-**text.md**
-
-```markdown
-- I would like to drink some <some kind of drink>.
-- I love <pet>.
-
-- I'd like to go to play with someone.
-```
-
 **index.js**
 
 ```javascript
-let fs = require('fs');
-let tm = require('tokenize-monster');
+const tokenize = require('./tokenize-monster').tokenize
 
-let data = fs.readFileSync('./text.md', 'utf-8');
+console.log(
+	tokenize("i'd like to drink some <milk>")
+		.tag("tag", /<[^><]+>/, text =>
+			text.match(/<([^><]+)>/)[1])
+		.split("word", /\s+/)
+		.filter(term => term.text !== '')
+		.tokens
+)
 
-let result = data.split(/\r?\n/)
-	.filter(line =>
-		line !== /\s*/)
-	.map(line => {
-		return tm.tokenize(line)
-			.tag(/(<[^>]*>)/, "tag", text =>
-				/<([^>]*)>/.exec(text)[1])
-			.split(/\s+/, "word")
-			.getTokens();
-	})
 
 console.log(result);
 
 /* =>
-[ [ { tag: 'word', data: '-' },
-    { tag: 'word', data: 'I' },
-    { tag: 'word', data: 'would' },
-    { tag: 'word', data: 'like' },
-    { tag: 'word', data: 'to' },
-    { tag: 'word', data: 'drink' },
-    { tag: 'word', data: 'some' },
-    { tag: 'word', data: '' },
-    { tag: 'tag', data: 'some kind of drink' },
-    { tag: 'word', data: '.' } ],
-  [ { tag: 'word', data: '-' },
-    { tag: 'word', data: 'I' },
-    { tag: 'word', data: 'love' },
-    { tag: 'word', data: '' },
-    { tag: 'tag', data: 'pet' },
-    { tag: 'word', data: '.' } ],
-  [ { tag: 'word', data: '' } ],
-  [ { tag: 'word', data: '-' },
-    { tag: 'word', data: 'I\'d' },
-    { tag: 'word', data: 'like' },
-    { tag: 'word', data: 'to' },
-    { tag: 'word', data: 'go' },
-    { tag: 'word', data: 'to' },
-    { tag: 'word', data: 'play' },
-    { tag: 'word', data: 'with' },
-    { tag: 'word', data: 'someone.' } ] ]
+[ Term { tag: 'word', text: 'i\'d', tokenized: true, data: 'i\'d' },
+  Term { tag: 'word', text: 'like', tokenized: true, data: 'like' },
+  Term { tag: 'word', text: 'to', tokenized: true, data: 'to' },
+  Term { tag: 'word', text: 'drink', tokenized: true, data: 'drink' },
+  Term { tag: 'word', text: 'some', tokenized: true, data: 'some' },
+  Term { tag: 'tag', text: '<milk>', tokenized: true, data: 'milk' } ]
 */
 ```
