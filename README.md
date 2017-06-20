@@ -22,12 +22,24 @@ function firstGroup(regexp) {
   return text => text.match(regexp)[1]
 }
 
-console.log(
-	tokenize("i'd <like> to drink some <milk>")
-		.tag("tag", /<[^><]+>/, firstGroup(/<([^><]+)>/))
-		.tokens
-    .map(token => token.data)
-)
+let tokens = tokenize("i'd <like> to drink some <milk>")
+	.tag("tag", /<[^><]+>/, firstGroup(/<([^><]+)>/))
+	.tokens;
 
+console.log(tokens.map(token => token.data))
 // => [ 'like', 'milk' ]
+
+console.log(tokens.map(token => token.tag))
+// => ['tag', 'tag']
 ```
+
+Documentation
+-------------
+
+Our docs are available at [Tokenize Monster Wiki](https://github.com/clitetailor/tokenize-monster/wiki).
+
+Changelog
+---------
+
+Visit [Github Releases](https://github.com/clitetailor/tokenize-monster/releases) page for more information.
+
