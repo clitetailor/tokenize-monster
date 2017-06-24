@@ -21,5 +21,10 @@
     "url": "https://github.com/clitetailor/tokenize-monster/issues"
   },
   "homepage": "https://github.com/clitetailor/tokenize-monster#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.2"
+  }
 }
