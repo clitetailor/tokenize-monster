@@ -3,8 +3,8 @@ Tokenize Monster
 
 > Yet another powerful tokenizer in **JS**.
 
-Install
--------
+Installation
+------------
 
 ```bash
 npm install --save tokenize-monster
@@ -13,24 +13,28 @@ npm install --save tokenize-monster
 Getting Started
 ---------------
 
-**index.js**
-
 ```javascript
-const tokenize = require('./tokenize-monster').tokenize
+const tokenizer = require('tokenize-monster');
 
-function firstGroup(regexp) {
-  return text => text.match(regexp)[1]
-}
+const tokens = tokenizer.matchAndMap(
+	'i\'d like to <drink> some <milk>',
+	/<[^><]+>/,
+	text => [[text]],
+	text => [text]
+);
 
-let tokens = tokenize("i'd <like> to drink some <milk>")
-	.tag("tag", /<[^><]+>/, firstGroup(/<([^><]+)>/))
-	.tokens;
+console.log(tokens);
+// => [ 'i\'d like to ', [ '<drink>' ], ' some ', [ '<milk>' ], '' ]
 
-console.log(tokens.map(token => token.data))
-// => [ 'like', 'milk' ]
+const nTokens = tokenizer.matchAndMap(
+	'i\'d like to <drink> some <milk>',
+	/<[^><]+>/,
+	text => [text],
+	text => []
+);
 
-console.log(tokens.map(token => token.tag))
-// => ['tag', 'tag']
+console.log(nTokens);
+// => [ '<drink>', '<milk>' ]
 ```
 
 Documentation
