@@ -37,6 +37,11 @@ console.log(nTokens);
 // => [ '<drink>', '<milk>' ]
 ```
 
+Example
+-------
+
+- [Simple XML Parser](https://github.com/clitetailor/simple-xml-parser)
+
 Documentation
 -------------
 
